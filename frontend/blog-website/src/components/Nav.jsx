@@ -15,7 +15,7 @@ export default function Header() {
 <>
 <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Brand href="#">Website Title</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -25,25 +25,27 @@ export default function Header() {
           >
           
             <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+            <Nav.Link href="#action2">Blogs</Nav.Link>
+            <NavDropdown title="Get Started" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
-                Another action
+              About Us
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
-                Something else here
+             Help
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
+            <Nav.Link href="#" >
+            <span class="material-symbols-outlined">
+notifications
+</span>
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Search Blogs"
               className="me-2"
               aria-label="Search"
             />
