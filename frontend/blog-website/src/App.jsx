@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import Nav from "./components/Nav"
 
+import Header from "./components/Nav"
 function App() {
 
   return (
     <div className="app">
-      <Nav></Nav>
-      THis is react app</div>
+   <Header></Header>
+     </div>
+      
+      
   )
 }
 
