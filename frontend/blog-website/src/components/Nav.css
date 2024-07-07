@@ -1,0 +1,16 @@
+.search-input {
+    animation: slideDown 5s ease-in-out infinite;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+    }
+  }
+
+  .d-flex{
+    width: 30%;
+  }
+  
