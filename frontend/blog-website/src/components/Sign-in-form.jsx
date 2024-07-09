@@ -6,7 +6,7 @@ function SignIn() {
   return (
     <Form className='m-5'>
       <Form.Group className="mb-3 " controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Username</Form.Label>
         <Form.Control type="text" placeholder="Enter Username" />                                                           
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
