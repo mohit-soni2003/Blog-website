@@ -18,7 +18,7 @@ router.post("/signup",(req,res)=>{
     const {name , email , username , password} =req.body;
     // check all fields are entered ........
     if(!name , !email , !username , !password ){
-        return res.json({error : "Please add all the fields"})
+        return res.json({error : "Please add all of the fields"})
     }
     // check either user with same email or username should not registered .....
     USERS.findOne({$or : [{email:email}, {username : username}]})
@@ -40,7 +40,7 @@ router.post("/signup",(req,res)=>{
                 console.log(res)
             })
             .catch(err=>console.log(err))
-            res.json({message:"signup post"})
+            res.json({message:"signup Successful"})
             
         })
 

@@ -9,6 +9,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Nav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {LinkContainer} from 'react-router-bootstrap'
+
 
 const searchTexts = [
   'Search for the latest Blogs!',
@@ -17,7 +19,7 @@ const searchTexts = [
   'What are you curious about today!',
 ]; 
 
-export default function Header() {
+export default function NavigationBar() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
@@ -37,8 +39,17 @@ export default function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-              <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link>Home</Nav.Link>
               <Nav.Link href="#action2">Blogs</Nav.Link>
+
+              <LinkContainer to="/signin">
+              <Nav.Link>Signin</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/signup">
+              <Nav.Link>Signup</Nav.Link>
+              </LinkContainer>
+
               <NavDropdown title="Get Started" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">About Us</NavDropdown.Item>
