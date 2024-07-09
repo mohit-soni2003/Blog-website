@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import Header from "./components/Nav"
-import SignIn from "./components/Sign-in-form"
+import SignIn from "./components/Sign-up-form"
 function App() {
 
   return (
