@@ -3,3 +3,4 @@ npm router ()
 npm i mongoose
 
 npm i bcrypt  ---------- for hashing password
+npm install react-bootstrap bootstrap
