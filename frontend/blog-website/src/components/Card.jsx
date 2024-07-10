@@ -6,20 +6,25 @@ import Card from 'react-bootstrap/Card';
 import "./Card.css"
 import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function CategoryCard(props){
     return(
-
-         <Card style={{ width: '22rem' }} className='category-card'>
+        <Link to={`./${props.route}` } className="text-decoration-none">
+         <Card style={{ width: '22rem', height:'30rem' }} className='category-card'>
       <Card.Img variant="top" src={props.src} />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+      <Card.Body >
+        <Card.Title>{props.title}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+      { props.description}
         </Card.Text>
-        <Link to="/food">Visit here</Link>
+       
+      
+
       </Card.Body>
     </Card>
+    </Link>
+    
        
 
     )
