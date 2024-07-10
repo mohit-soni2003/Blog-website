@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {LinkContainer} from 'react-router-bootstrap'
 
 
+
 const searchTexts = [
   'Search for the latest Blogs!',
   'Find insightful blogs!',
@@ -53,7 +54,9 @@ export default function NavigationBar() {
               </LinkContainer>
 
               <NavDropdown title="Get Started" id="navbarScrollingDropdown">
+                <LinkContainer to="/createblog">
                 <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
+                </LinkContainer>
                 <NavDropdown.Item href="#action4">About Us</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">Help</NavDropdown.Item>
