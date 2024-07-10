@@ -1,0 +1,17 @@
+body{
+    background-color: ;
+}
+.form{
+    border: 2px solid black;
+    width: 60%;
+    margin: auto;
+    margin-top: 9%;
+    border-radius: 10px;
+  
+    flex-direction: column;
+  height: max-content
+    justify-content: space-around;
+}
+.inputfield{
+    margin: 3%;
+}
