@@ -15,7 +15,7 @@ function CreateBlog() {
     const [description, setDescription] = useState("")
     const [content, setContent] = useState("")
     const [image, setImage] = useState("https://media.istockphoto.com/id/931643150/vector/picture-icon.jpg?s=612x612&w=0&k=20&c=St-gpRn58eIa8EDAHpn_yO4CZZAnGD6wKpln9l3Z3Ok=")
-    const [author, setAuthor] = useState("")
+    const [author, setAuthor] = useState("mohit")
     const [views, setViews] = useState("0")
     const [like, setLike] = useState("0")
     const [categories, setCategories] = useState("")
