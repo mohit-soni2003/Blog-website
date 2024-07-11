@@ -54,4 +54,5 @@ router.post("/createblog", (req, res) => {
 })
 
 
-module.exports = router 
+
+module.exports = router;
