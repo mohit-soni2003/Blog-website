@@ -27,11 +27,17 @@ router.post("/createblog", (req, res) => {
 
     blog.save()
     .then((result)=>{
-        return res.json({blog : result})
+        if(result){
+        return res.json({message:" Successfully Blog Posted"})
+    }
+    else{
+            return res.json({error:"Some error occured while saving"})
+            
+        }
     })
-    .catch(err => console.log(err))
-
-    res.json({message:"Blog Created Successfully"})
+    .catch(err=>console.log(err))
+    
+    
 })
 
 module.exports = router 
