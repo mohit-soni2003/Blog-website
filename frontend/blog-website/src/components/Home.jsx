@@ -26,7 +26,7 @@ function Home() {
                     <Card src={TravelImage} route="travel" title="Travel" description="Unforgettable Adventures Await! Explore our travel blog for destination guides, travel tips, and inspiring stories to fuel your wanderlust. (Click to explore)"></Card>
                     <Card src={EntertainmentImage} route="Entertainment" title="Entertainment" description=" Unpacking the latest releases, uncovering hidden gems, and sparking discussions about your favorite movies, music, and shows. (Click to join the conversation)"></Card>
                     <Card src={TechnologyImage} route="Technology" title="Technology" description="Power of Technology! Discover innovative gadgets, in-depth reviews, and practical tips to enhance your life and work with technology. (Click to learn more)"></Card>
-
+                    
                 </div>
 
             </div>

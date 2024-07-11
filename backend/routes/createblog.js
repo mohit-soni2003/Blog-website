@@ -1,10 +1,23 @@
 const express = require("express")
 const router = express.Router()
 const Blog = require("../models/blogs")
+const mongoose = require("mongoose")
+
 
 router.get("/createblog", (req, res) => {
     res.json({ message: "create blog get route" })
 })
+
+router.get("/categories/:category", async(req, res) => {
+    const category = req.params.category;
+
+    try {
+        let data = await Blog.find({ categories: category });
+        res.json({ data });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 router.post("/createblog", (req, res) => {
     const { title, description, content, image, like, author, views, categories } = req.body;
     if (!categories){
@@ -24,13 +37,13 @@ router.post("/createblog", (req, res) => {
         views: "0",
         categories: categories,
     })
-
+    
     blog.save()
     .then((result)=>{
         if(result){
-        return res.json({message:" Successfully Blog Posted"})
-    }
-    else{
+            return res.json({message:" Successfully Blog Posted"})
+        }
+        else{
             return res.json({error:"Some error occured while saving"})
             
         }
@@ -39,5 +52,6 @@ router.post("/createblog", (req, res) => {
     
     
 })
+
 
 module.exports = router 
