@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NavigationBar from "./Nav"
 
 
 
@@ -69,50 +70,54 @@ function SignUp() {
     }
 
     return (
-        <Form className='m-5'>
+       <>
+        <NavigationBar></NavigationBar>
 
-            <Form.Group className="mb-3 " controlId="name">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type='text' placeholder="Enter Full Name" value={name} name='name' onChange={handleNameChange} />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+<Form className='m-5'>
 
-            </Form.Group>
+    <Form.Group className="mb-3 " controlId="name">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type='text' placeholder="Enter Full Name" value={name} name='name' onChange={handleNameChange} />
+        <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+        </Form.Text>
 
-            <Form.Group className="mb-3 " controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type='email' placeholder="xyz@gmail.com" value={email} name='email' onChange={handleEmailChange}  />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+    </Form.Group>
 
-            </Form.Group>
+    <Form.Group className="mb-3 " controlId="email">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type='email' placeholder="xyz@gmail.com" value={email} name='email' onChange={handleEmailChange}  />
+        <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+        </Form.Text>
 
-            <Form.Group className="mb-3 " controlId="username">
-                <Form.Label>UserName</Form.Label>
-                <Form.Control type='text' placeholder="Enter Username" name='username' value={username} onChange={handleUserNameChange} autoComplete='username' />
+    </Form.Group>
 
-            </Form.Group>
+    <Form.Group className="mb-3 " controlId="username">
+        <Form.Label>UserName</Form.Label>
+        <Form.Control type='text' placeholder="Enter Username" name='username' value={username} onChange={handleUserNameChange} autoComplete='username' />
 
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePasswordChange} autoComplete='email-first' />
-                <Form.Text className="text-muted">
-                    Create a Strong Password
-                </Form.Text>
-            </Form.Group>
+    </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
+    <Form.Group className="mb-3" controlId="password">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePasswordChange} autoComplete='email-first' />
+        <Form.Text className="text-muted">
+            Create a Strong Password
+        </Form.Text>
+    </Form.Group>
 
-            {/* <Button variant="primary" type="submit" onClick={postData}>
-                Submit
-            </Button> */}
-                            <input type="button" value="Sign-up" onClick={postData} className="signup-btn"  />
+    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+    </Form.Group>
 
-        </Form>
+    {/* <Button variant="primary" type="submit" onClick={postData}>
+        Submit
+    </Button> */}
+                    <input type="button" value="Sign-up" onClick={postData} className="signup-btn"  />
+
+</Form>
+       </>
     );
 }
 

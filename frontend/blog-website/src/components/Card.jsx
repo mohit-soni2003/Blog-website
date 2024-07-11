@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function CategoryCard(props){
     return(
-        <Link to={`./${props.route}` } className="text-decoration-none">
+        <Link to={`./categories/${props.route}` } className="text-decoration-none">
          <Card style={{ width: '22rem', height:'30rem' }} className='category-card'>
       <Card.Img variant="top" src={props.src} />
       <Card.Body >

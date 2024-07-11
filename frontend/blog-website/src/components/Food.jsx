@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 
 import NavigationBar from "./Nav"
 
+
+
+
 function Food() {
 return(
     <>
