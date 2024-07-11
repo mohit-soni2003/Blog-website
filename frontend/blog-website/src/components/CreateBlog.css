@@ -1,0 +1,13 @@
+
+.form{
+    border: 2px solid black;
+    width: 60%;
+    margin: auto;
+    margin-top: 9%;
+    border-radius: 10px;
+  height: max-content
+
+}
+.inputfield{
+    margin: 3%;
+}

@@ -4,8 +4,8 @@ const app = express();
 const cors=require("cors")
 const port = 8080;
 const mongoose = require("mongoose")
-// const url = "mongodb+srv://2mohitsoni:Mohit1234@cluster0.wjfspkb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-const url = "mongodb+srv://mohitsonip1847:Mohit1234@clusterblog.rchij4m.mongodb.net/?retryWrites=true&w=majority&appName=Clusterblog"
+const url = "mongodb+srv://2mohitsoni:Mohit1234@cluster0.wjfspkb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+// const url = "mongodb+srv://mohitsonip1847:Mohit1234@clusterblog.rchij4m.mongodb.net/?retryWrites=true&w=majority&appName=Clusterblog"
 
  
 mongoose.connect(url)
