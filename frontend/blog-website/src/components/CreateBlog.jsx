@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CreateBlog() {
+    const navigate = useNavigate()
+
 
     // State Variables -------------------------------
 
@@ -73,7 +75,8 @@ function CreateBlog() {
             {
                 method: "post",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("jwt")
                 },
                 body: JSON.stringify({
                     title: title,

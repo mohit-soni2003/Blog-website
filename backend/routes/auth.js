@@ -2,6 +2,9 @@ const express = require("express")
 const router = express.Router()
 const USERS = require("../models/users")
 const bcrypt = require('bcrypt');
+const {jwt_secret} = require("../keys")
+const jwt = require("jsonwebtoken")
+
 
 
 
@@ -72,7 +75,9 @@ router.post("/signin",(req,res)=>{
         bcrypt.compare(password,savedUser.password)
         .then((match)=>{
             if(match){
-                return res.status(422).json({message : "Signin Successful"})
+                const token = jwt.sign({_id : savedUser.id},jwt_secret)
+                // console.log(token)
+                return res.status(422).json({message : "Signin Successful",token:token})
             }
             else{
                 return res.status(422).json({error : "Invalid Password"})

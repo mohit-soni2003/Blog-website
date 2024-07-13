@@ -48,6 +48,7 @@ function SignIn() {
       }
       else{
             notifyA(data.message)
+            localStorage.setItem("jwt",data.token)
             console.log(data.message)
             
             navigate("/signup")

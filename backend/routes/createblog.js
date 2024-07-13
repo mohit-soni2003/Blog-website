@@ -2,13 +2,14 @@ const express = require("express")
 const router = express.Router()
 const Blog = require("../models/blogs")
 const mongoose = require("mongoose")
+const requireLogin = require("../middlewares/requireLogin")
 
 
-router.get("/createblog", (req, res) => {
+router.get("/createblog",requireLogin, (req, res) => {
     res.json({ message: "create blog get route" })
 })
 
-router.get("/categories/:category", async(req, res) => {
+router.get("/categories/:category" , async(req, res) => {
     const category = req.params.category;
 
     try {
@@ -18,7 +19,7 @@ router.get("/categories/:category", async(req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-router.post("/createblog", (req, res) => {
+router.post("/createblog", requireLogin,(req, res) => {
     const { title, description, content, image, like, author, views, categories } = req.body;
     if (!categories){
         return res.json({ error: "pleaase choose categories" })
