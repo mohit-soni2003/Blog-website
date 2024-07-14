@@ -12,17 +12,17 @@ mongoose.connect(url)
 mongoose.connection.on('connected', () => console.log('connected'));
 mongoose.connection.on("error",()=>{console.log("Not Connected To Database......")})
 
-app.use(cors())
-app.use(express.json())  // parse the json data comming from post request 
-app.use(router)
+app.use(cors());
+app.use(express.json());  // parse the json data comming from post request 
+app.use(router);
 
-app.use(require("./routes/auth"))
-app.use(require("./routes/createblog"))
+app.use(require("./routes/auth"));
+app.use(require("./routes/createblog"));
 
 app.get("/",(req,res)=>{
     res.send("hello Server is ready")
-})
+});
 
 app.listen(port, ()=>{
     console.log("Server is listening......")
-})
+});
