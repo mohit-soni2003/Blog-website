@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const Blog = require("../models/blogs")
 const mongoose = require("mongoose")
+const Blog = require("../models/blogs")
 const requireLogin = require("../middlewares/requireLogin")
 
 
@@ -14,7 +14,7 @@ router.get("/categories/:category" , async(req, res) => {
 
     try {
         let data = await Blog.find({ categories: category });
-        res.json({ data });
+        res.json( data );
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -34,7 +34,7 @@ router.post("/createblog", requireLogin,(req, res) => {
         content: content,
         image: image,
         like: "0",
-        author: author,
+        author: req.user,
         views: "0",
         categories: categories,
     })

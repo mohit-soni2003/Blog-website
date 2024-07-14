@@ -1,34 +1,74 @@
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+
+
 
 import NavigationBar from "./Nav"
 
 
 function Fashion() {
-    const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
-    useEffect(() => {
-      const fetchData = async () => {
-        const response = await fetch("http://localhost:8080/categories/fashion");
-        const data = await response.json();
-        setData(data);
-      };
-  
-      fetchData();
-    }, []);
+  //Toast Function --------- ------ --------- -------
 
-    
-    console.log(data);
-    
-    return (
-    
+  const notifyA = (msg) => toast.success(msg)
+  const notifyB = (msg) => toast.error(msg)
+
+  //fetching all posts of category fashion----- ------ ------ ------
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt")
+
+    if (!token) {
+      notifyB("Please Signin to See the blogs")
+      navigate("/")
+      return
+    }
+    //Fetch Blogs from server
+    fetch("http://localhost:8080/categories/fashion", {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      },
+    }).then(res => res.json())
+      .then((result) => {
+        setData(result)
+        // console.log(result)
+      })
+      .catch(err => console.log(err))
+
+
+  }, []);
+  // console.log(data)
+
+  return (
+
     <>
-    
-            <NavigationBar></NavigationBar>
-    
-            <h1>Hello</h1>
+      <NavigationBar></NavigationBar>
+      {/*cards*/}
+      {data.map((blogs) => {console.log(blogs)
+        return(
+        <Card style={{ width: '22rem', height: '35rem' }} className='category-card'>
+          <Card.Img variant="top" src={blogs.image} />
+          <Card.Body >
+            <Card.Title>{blogs.title}</Card.Title>
+            <Card.Text>
+              {blogs.description}
+            </Card.Text>
 
-            </> 
+            <h6 style={{ color: "red" }}>{blogs.content}</h6>
+          </Card.Body>
+        </Card>
+        )
+
+      })}
+
+
+    </>
   )
 }
 

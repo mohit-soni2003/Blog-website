@@ -10,13 +10,18 @@ import { useNavigate } from 'react-router-dom';
 function CreateBlog() {
     const navigate = useNavigate()
 
+     // Toast Function ----------- ---------- --------- -------
+     const notifyA = (msg) => toast.success(msg)
+     const notifyB = (msg) => toast.error(msg)
+
 
     // State Variables -------------------------------
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [content, setContent] = useState("")
-    const [image, setImage] = useState("https://media.istockphoto.com/id/931643150/vector/picture-icon.jpg?s=612x612&w=0&k=20&c=St-gpRn58eIa8EDAHpn_yO4CZZAnGD6wKpln9l3Z3Ok=")
+    const [image, setImage] = useState("")
+    const [url, seturl] = useState("")
     const [author, setAuthor] = useState("mohit")
     const [views, setViews] = useState("0")
     const [like, setLike] = useState("0")
@@ -58,8 +63,12 @@ function CreateBlog() {
     //   ----------handling image preview -----------------
 
     const loadImage = (event) => {
-        if (event.target.files && event.target.files[0]) {
-            setImage(URL.createObjectURL(event.target.files[0]));
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+            // console.log(event.target.files[0])
+            setImage(event.target.files[0])
         }
 
     }
@@ -67,9 +76,9 @@ function CreateBlog() {
 
     // ------------Blog posting to server-----------------
 
-    const postData = () => {
-        
-        console.log(title, description, content, image, author, views, like, categories)
+    useEffect(() => {
+        if(url){
+            // console.log(title, description, content, image, author, views, like, categories,url)
 
         fetch("http://localhost:8080/createblog",
             {
@@ -82,8 +91,7 @@ function CreateBlog() {
                     title: title,
                     description: description,
                     content: content,
-                    image: image,
-                    author: author,
+                    image: url,
                     views: views,
                     categories: categories
                 })
@@ -99,9 +107,27 @@ function CreateBlog() {
                 }
             })
 
-        // Toast Function ----------- ---------- --------- -------
-        const notifyA = (msg) => toast.success(msg)
-        const notifyB = (msg) => toast.error(msg)
+        }
+    }, [url])
+    
+
+    const postDetails=()=>{
+        if(!image){
+            notifyB("Please Select Image")
+        }
+        const data = new FormData();
+        data.append("file",image)
+        data.append("upload_preset", "blog-website")
+        data.append("cloud_name", "mohitcloud2003")
+        fetch("https://api.cloudinary.com/v1_1/mohitcloud2003/image/upload",
+            {
+                method: "POST",
+                body: data
+            })
+            .then(res => res.json())
+            .then(data => seturl(data.url))
+            .catch(err => { console.log(err) })
+
     }
 
     return (
@@ -138,14 +164,14 @@ function CreateBlog() {
                         <Form.Control as="textarea" rows={3} placeholder='Write your Blog Here . . . . .' onChange={handleContentChange} />
                     </Form.Group>
 
-                    <img alt="" src={image} />
+                    <img alt="" id='output' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogctJgKGzSpzmnn49L2QW3LALznYajgoiew&usqp=CAU" />
 
                     <Form.Group className="mb-3 inputfield" controlId="output">
                         <Form.Label>Image Link</Form.Label>
                         <Form.Control type='file' placeholder="Select Image For Blog" accept='image/*' onChange={loadImage} />
                     </Form.Group>
 
-                    <input type="button" value={"POST"} onClick={postData} />
+                    <input type="button" value={"Post Blog"} onClick={postDetails} />
 
                 </Form>
             </div></>
