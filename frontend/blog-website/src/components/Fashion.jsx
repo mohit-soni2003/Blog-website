@@ -17,21 +17,19 @@ function Fashion() {
       fetchData();
     }, []);
 
-
-
-
+    
     console.log(data);
+    
     return (
-        <>
+    
+    <>
+    
             <NavigationBar></NavigationBar>
+    
             <h1>Hello</h1>
-           
-            
-            </>
-    )
 
-
-
+            </> 
+  )
 }
 
 export default Fashion;
