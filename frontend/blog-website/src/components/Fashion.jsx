@@ -11,6 +11,7 @@ import NavigationBar from "./Nav"
 
 
 function Fashion() {
+  
   const [data, setData] = useState([]);
   const navigate = useNavigate()
 
