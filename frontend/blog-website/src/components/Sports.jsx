@@ -13,17 +13,12 @@ import NavigationBar from "./Nav"
 function Sports() {
   const [data, setData] = useState([]);
   const navigate = useNavigate()
-
   //Toast Function --------- ------ --------- -------
-
   const notifyA = (msg) => toast.success(msg)
   const notifyB = (msg) => toast.error(msg)
-
   //fetching all posts of category fashion----- ------ ------ ------
-
   useEffect(() => {
     const token = localStorage.getItem("jwt")
-
     if (!token) {
       notifyB("Please Signin to See the blogs")
       navigate("/")
@@ -40,13 +35,9 @@ function Sports() {
         // console.log(result)
       })
       .catch(err => console.log(err))
-
-
   }, []);
   // console.log(data)
-
   return (
-
     <>
       <NavigationBar></NavigationBar>
       {/*cards*/}
@@ -59,15 +50,11 @@ function Sports() {
             <Card.Text>
               {blogs.description}
             </Card.Text>
-
             <h6 style={{ color: "red" }}>{blogs.content}</h6>
           </Card.Body>
         </Card>
         )
-
       })}
-
-
     </>
   )
 }
