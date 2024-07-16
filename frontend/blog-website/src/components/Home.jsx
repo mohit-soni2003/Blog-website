@@ -7,6 +7,7 @@ import FashionImage from "../img/fashion.jpg"
 import TravelImage from "../img/travel.jpg"
 import TechnologyImage from "../img/Technology.jpg"
 import EntertainmentImage from "../img/Entertainment.jpg"
+import HomeC1 from "./HomeC1"
 import "./Home.css";
 import { Link } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ function Home() {
         <>
             <NavigationBar></NavigationBar>
 
+    <HomeC1></HomeC1>
             <div >
                 <h1> Categories </h1>
                 <div className="category-container">
