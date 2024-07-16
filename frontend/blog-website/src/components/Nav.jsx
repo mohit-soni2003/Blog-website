@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-
+import "./Nav.css"
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Nav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {LinkContainer} from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 
 
@@ -18,44 +18,68 @@ const searchTexts = [
   'Find insightful blogs!',
   'Explore Your Interest! ',
   'What are you curious about today!',
-]; 
+];
 
 export default function NavigationBar() {
+  const token = localStorage.getItem("jwt")
+
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  const navigationStatus = () => {
+    if (token) {
+      return (
+        <>
+          <LinkContainer to="/signup">
+            <Nav.Link>Logout</Nav.Link>
+          </LinkContainer>
+        </>
+      )
+    }
+    else {
+      return (
+        <>
+          <LinkContainer to="/signin">
+            <Nav.Link>Signin</Nav.Link>
+          </LinkContainer>
+
+          <LinkContainer to="/signup">
+            <Nav.Link>Signup</Nav.Link>
+          </LinkContainer>
+
+        </>
+      )
+    }
+
+  }
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTextIndex((prevIndex) => (prevIndex + 1) % searchTexts.length);
-    }, 5000); 
+    }, 5000);
 
-    return () => clearInterval(intervalId); 
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="#">The Open Page
-</Navbar.Brand>
+          <Navbar.Brand href="#"><div className='nav-title'>Blog Aura</div>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-            <LinkContainer to="/">
-              <Nav.Link>Home</Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
               </LinkContainer>
               <Nav.Link href="#action2">Blogs</Nav.Link>
 
-              <LinkContainer to="/signin">
-              <Nav.Link>Signin</Nav.Link>
-              </LinkContainer>
+              {navigationStatus()}
 
-              <LinkContainer to="/signup">
-              <Nav.Link>Signup</Nav.Link>
-              </LinkContainer>
 
               <NavDropdown title="Get Started" id="navbarScrollingDropdown">
                 <LinkContainer to="/createblog">
-                <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item href="#action4">About Us</NavDropdown.Item>
                 <NavDropdown.Divider />

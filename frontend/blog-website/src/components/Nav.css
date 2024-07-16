@@ -14,3 +14,10 @@
     width: 30%;
   }
   
+  .nav-title{
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+    color: rgb(0, 128, 64);
+    text-shadow: 1px 1px 2px rgb(126, 126, 126);
+    
+  }
