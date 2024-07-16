@@ -30,7 +30,7 @@ function Food() {
       return
     }
     //Fetch Blogs from server
-    fetch("http://localhost:8080/categories/Food", {
+    fetch("http://localhost:8080/categories/food", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       },

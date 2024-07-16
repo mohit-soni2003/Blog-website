@@ -26,7 +26,7 @@ function Entertainment() {
       return
     }
     //Fetch Blogs from server
-    fetch("http://localhost:8080/categories/Entertainment", {
+    fetch("http://localhost:8080/categories/entertainment", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       },

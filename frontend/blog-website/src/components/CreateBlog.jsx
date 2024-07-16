@@ -146,7 +146,7 @@ function CreateBlog() {
                         <option value="sports">Sports Fitness & Wellness</option>
                         <option value="travel">Travel</option>
                         <option value="entertainment">Entertainment</option>
-                        <option value="Technology">Technology</option>
+                        <option value="technology">Technology</option>
                     </Form.Select>
 
                     <Form.Group className="mb-3 inputfield" controlId="Description">

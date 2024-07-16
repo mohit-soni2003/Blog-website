@@ -22,10 +22,10 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/categories/food" element={<Food />}></Route>
           <Route path="/categories/fashion" element={<Fashion/>}></Route>
-          <Route path="/categories/Technology" element={<Technology/>}></Route>
-          <Route path="/categories/Sports" element={<Sports/>}></Route>
-          <Route path="/categories/Travel" element={<Travel />}></Route>
-          <Route path="/categories/Entertainment" element={<Entertainment />}></Route>
+          <Route path="/categories/technology" element={<Technology/>}></Route>
+          <Route path="/categories/sports" element={<Sports/>}></Route>
+          <Route path="/categories/travel" element={<Travel />}></Route>
+          <Route path="/categories/entertainment" element={<Entertainment />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/createblog" element={<CreateBlog />}></Route>

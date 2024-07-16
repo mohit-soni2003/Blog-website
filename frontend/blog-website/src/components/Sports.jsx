@@ -25,7 +25,7 @@ function Sports() {
       return
     }
     //Fetch Blogs from server
-    fetch("http://localhost:8080/categories/Sports", {
+    fetch("http://localhost:8080/categories/sports", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       },
