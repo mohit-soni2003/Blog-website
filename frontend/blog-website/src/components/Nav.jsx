@@ -116,8 +116,8 @@ export default function NavigationBar() {
               />
               <Button variant="outline-success">Search</Button>
             </Form>
-          </Navbar.Collapse>
           {logoutButtonStatus()}
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

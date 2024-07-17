@@ -11,13 +11,13 @@
   }
 
   .d-flex{
-    width: 30%;
+    width: 35%;
   }
   
   .nav-title{
     font-size: 30px;
     font-family: 'Dancing Script', cursive;
-    color: rgb(0, 128, 64);
-    text-shadow: 1px 1px 2px rgb(126, 126, 126);
+    color: rgb(0, 54, 136);
+    text-shadow: 1px 1px 2px rgb(72, 154, 172);
     
   }
