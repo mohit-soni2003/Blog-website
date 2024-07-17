@@ -75,7 +75,7 @@ function SignUp() {
 
     return (
         <>
-            <NavigationBar></NavigationBar>
+          
 
             <div className='signup-form-container'>
                 <div className='signup-form-gif'> <img src={gif} alt="" /></div>
