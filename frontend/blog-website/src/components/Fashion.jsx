@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Fashion.css'
 import Card from 'react-bootstrap/Card';
 
 
@@ -49,12 +50,15 @@ function Fashion() {
   return (
 
     <>
-      <NavigationBar></NavigationBar>
+     <NavigationBar></NavigationBar>
+     <div className="cat-container">
+    
       {/*cards*/}
       {data.map((blogs) => {console.log(blogs)
         return(
-        <Card style={{ width: '22rem', height: '35rem' }} className='category-card'>
-          <Card.Img variant="top" src={blogs.image} />
+
+         <Card style={{ width: '22rem', height: '35rem' }} className='category-card'>
+          <Card.Img variant="top" src={blogs.image}  className="cat-image"/>
           <Card.Body >
             <Card.Title>{blogs.title}</Card.Title>
             <Card.Text>
@@ -64,9 +68,11 @@ function Fashion() {
             <h6 style={{ color: "red" }}>{blogs.content}</h6>
           </Card.Body>
         </Card>
+
         )
 
       })}
+     </div>
 
 
     </>

@@ -4,7 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-
+import "./signin.css";
+import gif from"../img/hello.gif"
 
 function SignIn() {
 
@@ -62,7 +63,11 @@ function SignIn() {
   const notifyB = (msg)=>toast.error(msg)
   }
   return (
-    <Form className='m-5'>
+<>
+<div className='signin-form-container'>
+  <div className='signin-form-gif'><img src={gif} alt="" /></div>
+  <div className='signin-form'>
+  <Form className='m-5'>
       <Form.Group className="mb-3 " controlId="username">
         <Form.Label>Username</Form.Label>
         <Form.Control type="text" placeholder="Enter Username" value={username} onChange={handleUsernameChange} />
@@ -80,6 +85,9 @@ function SignIn() {
       </Form.Group>
       <input type="button" value={"signin"} onClick={postData}  />
     </Form>
+  </div>
+</div>
+</>
   );
 }
 

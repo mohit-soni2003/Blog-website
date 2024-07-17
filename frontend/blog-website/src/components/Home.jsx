@@ -18,7 +18,7 @@ function Home() {
 
     <HomeC1></HomeC1>
             <div >
-                <h1> Categories </h1>
+              
                 <div className="category-container">
                     <Card src={FashionImage} route="fashion" title="Fashion & Beauty" description="Fashion for Everyone! Outfit ideas and styling tips await! Stay on top of clothing trends with our fashion blog. Discover styles for every you. (Click to explore)"></Card>
                     <Card src={FoodImage} route="food" title="Food" description="Explore a World of Flavors. Dive into a world of culinary creations. Click here to embark on a delicious journey with our food blog, filled with easy-to-follow recipes and inspiring ideas."></Card>

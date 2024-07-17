@@ -3,6 +3,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+    height: 95vh;
    
     margin: 40px 0px;
 }
