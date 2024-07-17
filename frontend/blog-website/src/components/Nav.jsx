@@ -10,6 +10,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Nav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 
 
@@ -21,21 +23,29 @@ const searchTexts = [
 ];
 
 export default function NavigationBar() {
+  const navigate = useNavigate()
   const token = localStorage.getItem("jwt")
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const navigationStatus = () => {
+  const logout = () => {
+    localStorage.clear()
+    navigate("/")
+  }
+
+  const logoutButtonStatus = () => {
     if (token) {
       return (
         <>
-          <LinkContainer to="/signup">
-            <Nav.Link>Logout</Nav.Link>
-          </LinkContainer>
+          <Button variant="danger mx-4" onClick={logout}>Logut</Button>
         </>
       )
     }
-    else {
+
+  }
+  const navigationStatus = () => {
+    if (!token) {
+
       return (
         <>
           <LinkContainer to="/signin">
@@ -49,7 +59,6 @@ export default function NavigationBar() {
         </>
       )
     }
-
   }
 
   useEffect(() => {
@@ -72,14 +81,23 @@ export default function NavigationBar() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <Nav.Link href="#action2">Blogs</Nav.Link>
+
+
+
+              <LinkContainer to="">
+                <Nav.Link >
+                  <HashLink smooth style={{ textDecoration: "none", color: "black" }} to="/#home-category">Blogs
+                  </HashLink>
+                </Nav.Link>
+              </LinkContainer>
 
               {navigationStatus()}
 
 
               <NavDropdown title="Get Started" id="navbarScrollingDropdown">
+
                 <LinkContainer to="/createblog">
-                  <NavDropdown.Item href="#action3">Start Writing</NavDropdown.Item>
+                  <NavDropdown.Item>Start Writing</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item href="#action4">About Us</NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -93,12 +111,13 @@ export default function NavigationBar() {
               <Form.Control
                 type="search"
                 placeholder={searchTexts[currentTextIndex]} // Dynamically update placeholder
-                className="me-2"
+                className="me-2 "
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
             </Form>
           </Navbar.Collapse>
+          {logoutButtonStatus()}
         </Container>
       </Navbar>
     </>

@@ -12,6 +12,7 @@ import Technology from './components/Technology';
 import Sports from './components/Sports';
 import Travel from './components/Travel';
 import Entertainment from './components/Entertainment';
+// import Modal from "./components/Modal"
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         </Routes>
         
         <ToastContainer theme='light'></ToastContainer>
+        {/* <Modal></Modal> */}
       </div>
     </BrowserRouter>
 
