@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useContext } from 'react';
 import "./Nav.css"
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { LinkContainer } from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { LoginContext } from '../context/LoginContext';
 
 
 
@@ -22,22 +23,19 @@ const searchTexts = [
   'What are you curious about today!',
 ];
 
-export default function NavigationBar() {
+export default function NavigationBar({login}) {
+  const {setmodalopen} = useContext(LoginContext)
   const navigate = useNavigate()
   const token = localStorage.getItem("jwt")
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const logout = () => {
-    localStorage.clear()
-    navigate("/")
-  }
-
+  
   const logoutButtonStatus = () => {
-    if (token) {
+    if (token && login) {
       return (
         <>
-          <Button variant="danger mx-4" onClick={logout}>Logut</Button>
+          <Button variant="danger mx-4" onClick={()=>{setmodalopen(true)}}>Logout</Button>
         </>
       )
     }

@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import React,{ useState , createContext} from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import Home from "./components/Home";
+import Nav from"./components/Nav"
 import Food from "./components/Food";
 import Fashion from "./components/Fashion";
 import CreateBlog from "./components/CreateBlog";
@@ -12,13 +13,21 @@ import Technology from './components/Technology';
 import Sports from './components/Sports';
 import Travel from './components/Travel';
 import Entertainment from './components/Entertainment';
-// import Modal from "./components/Modal"
+import Modal from "./components/Modal"
+import { LoginContext } from './context/LoginContext';
+
 
 function App() {
-
+  const [userLogin, setuserLogin] = useState(false)
+  const [modalopen, setmodalopen] = useState(false)
   return (<>
     <BrowserRouter>
       <div className="app">
+        <LoginContext.Provider value={{setuserLogin , setmodalopen}}>
+        <Nav login = {userLogin}></Nav>
+        
+        {modalopen && <Modal></Modal> }
+        {}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/categories/food" element={<Food />}></Route>
@@ -33,7 +42,7 @@ function App() {
         </Routes>
         
         <ToastContainer theme='light'></ToastContainer>
-        {/* <Modal></Modal> */}
+        </LoginContext.Provider>
       </div>
     </BrowserRouter>
 

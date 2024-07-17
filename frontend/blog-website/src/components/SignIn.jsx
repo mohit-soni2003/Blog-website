@@ -2,13 +2,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { LoginContext } from '../context/LoginContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 
 function SignIn() {
 
-
+  const {setuserLogin} = useContext(LoginContext)
   const navigate = useNavigate()
 
 
@@ -49,9 +50,10 @@ function SignIn() {
       else{
             notifyA(data.message)
             localStorage.setItem("jwt",data.token)
+            setuserLogin(true)
             console.log(data.message)
             
-            navigate("/signup")
+            navigate("/")
           }
           
         console.log(data)})

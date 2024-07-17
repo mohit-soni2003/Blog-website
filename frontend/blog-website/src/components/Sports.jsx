@@ -39,7 +39,7 @@ function Sports() {
   // console.log(data)
   return (
     <>
-      <NavigationBar></NavigationBar>
+      
       {/*cards*/}
       {data.map((blogs) => {console.log(blogs)
         return(

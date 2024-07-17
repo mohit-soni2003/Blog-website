@@ -1,22 +1,46 @@
-import React from 'react'
-import { IoCloseSharp } from "react-icons/io5";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import "./modal.css"
+import React,  { useContext } from 'react';
+import { LoginContext } from '../context/LoginContext';
+import { useNavigate } from 'react-router-dom';
+ 
 
-export default function Modal() {
+function StaticExample() {
+  const navigate = useNavigate()
+  const {setmodalopen} = useContext(LoginContext)
+
+  const logout = () => {
+    localStorage.clear()
+    navigate("/")
+  }
+
+
   return (
-    <div className="modal">
-        <div className="modal-header">
-            Confirm
-        </div>
-        <button className="close-btn">
-        <IoCloseSharp />
-        </button>
+    <div className="dark-bg" onClick={()=>setmodalopen(false)}>
+      <div className="modal-centered">
+        <div
+          className="modal show logout-modal"
+          style={{ display: 'block', position: 'fixed' }}
+        >
+          <Modal.Dialog>
+            <Modal.Header closeButton onClick={()=>setmodalopen(false)}>
+              <Modal.Title>Confirm</Modal.Title>
+            </Modal.Header>
 
-        <div className="modal-content">Are you really want to Logout</div>
-        <div className="modal-actions">
-            <button>logout Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, neque esse. Quo corrupti laborum maiores architecto, cum nesciunt eveniet unde, molestiae repellendus corporis iure eum reiciendis dicta beatae quae, doloribus sit? Saepe, quod!</button>
-            <button>cancel</button>
+            <Modal.Body>
+              <p>Are You Really Want to Logout</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={()=>setmodalopen(false)}  >Close</Button>
+              <Button variant="primary"  onClick={logout}>Logout</Button>
+            </Modal.Footer>
+          </Modal.Dialog>
         </div>
+      </div>
     </div>
-  )
+  );
 }
+
+export default StaticExample;

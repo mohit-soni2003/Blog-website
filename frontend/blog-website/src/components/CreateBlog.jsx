@@ -134,7 +134,7 @@ function CreateBlog() {
 
 
         <>
-            <NavigationBar></NavigationBar>
+            
 
             <div className='form'>
                 <Form className='m-4 inputfield'>
