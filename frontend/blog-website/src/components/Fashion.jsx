@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Fashion.css'
 import Card from 'react-bootstrap/Card';
+import Blog from "./Blog"
 
 
 
@@ -12,7 +13,7 @@ import NavigationBar from "./Nav"
 
 
 function Fashion() {
-  
+
   const [data, setData] = useState([]);
   const navigate = useNavigate()
 
@@ -47,25 +48,36 @@ function Fashion() {
   }, []);
   // console.log(data)
 
+  const visitBlog =async(id)=>{
+    const response = await fetch(`http://localhost:8080/blog/${id}`)
+    const blogData =await response.json()
+    console.log(blogData)
+
+    navigate("/blog", { state: { blogData } });
+  }
+
   return (
 
     <>
-      
+
       {/*cards*/}
-      {data.map((blogs) => {console.log(blogs)
-        return(
+      {data.map((blogs) => {
+        console.log(blogs)
+        return (
+          <div id={blogs._id} onClick={()=>visitBlog(blogs._id)}>
+            <Card style={{ width: '22rem', height: '35rem' }} className='category-card' >
+              <Card.Img variant="top" src={blogs.image} className="cat-image" />
+              <Card.Body >
+                <Card.Title>{blogs.title}</Card.Title>
+                <Card.Text>
+                  {blogs.description}
+                </Card.Text>
 
-         <Card style={{ width: '22rem', height: '35rem' }} className='category-card'>
-          <Card.Img variant="top" src={blogs.image}  className="cat-image"/>
-          <Card.Body >
-            <Card.Title>{blogs.title}</Card.Title>
-            <Card.Text>
-              {blogs.description}
-            </Card.Text>
+                <h6 style={{ color: "red" }}>{blogs.content}</h6>
+              </Card.Body>
+            </Card>
+          </div>
 
-            <h6 style={{ color: "red" }}>{blogs.content}</h6>
-          </Card.Body>
-        </Card>
 
         )
 

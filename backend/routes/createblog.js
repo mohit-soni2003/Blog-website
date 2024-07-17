@@ -21,6 +21,17 @@ router.get("/categories/:category" , async(req, res) => {
     }
 });
 
+router.get("/blog/:id",async(req,res) =>{
+    const id = req.params.id;
+    try{
+        let data = await Blog.findById(id)
+        res.json(data)
+    }
+    catch{
+        res.status(500).json({ error:"some errror occured" });
+    }
+})
+
 
 router.post("/createblog", requireLogin,(req, res) => {
     const { title, description, content, image, like, author, views, categories } = req.body;

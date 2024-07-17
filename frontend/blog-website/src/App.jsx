@@ -12,8 +12,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import Technology from './components/Technology';
 import Sports from './components/Sports';
 import Travel from './components/Travel';
-import Entertainment from './components/Entertainment';
 import Modal from "./components/Modal"
+import Entertainment from './components/Entertainment';
+import Blog from './components/Blog';
 import { LoginContext } from './context/LoginContext';
 
 
@@ -39,6 +40,8 @@ function App() {
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/createblog" element={<CreateBlog />}></Route>
+          <Route path="/blog" element={<Blog />}></Route>
+
         </Routes>
         
         <ToastContainer theme='light'></ToastContainer>

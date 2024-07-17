@@ -32,7 +32,7 @@ export default function NavigationBar({login}) {
 
   
   const logoutButtonStatus = () => {
-    if (token && login) {
+    if (token || login) {
       return (
         <>
           <Button variant="danger mx-4" onClick={()=>{setmodalopen(true)}}>Logout</Button>
@@ -42,7 +42,7 @@ export default function NavigationBar({login}) {
 
   }
   const navigationStatus = () => {
-    if (!token) {
+    if (!token ) {
 
       return (
         <>
