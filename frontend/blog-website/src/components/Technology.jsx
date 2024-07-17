@@ -48,7 +48,7 @@ function Technology() {
   return (
 
     <>
-      <NavigationBar></NavigationBar>
+      
       {/*cards*/}
       {data.map((blogs) => {console.log(blogs)
         return(

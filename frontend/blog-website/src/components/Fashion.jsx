@@ -50,9 +50,7 @@ function Fashion() {
   return (
 
     <>
-     <NavigationBar></NavigationBar>
-     <div className="cat-container">
-    
+      
       {/*cards*/}
       {data.map((blogs) => {console.log(blogs)
         return(
@@ -72,7 +70,7 @@ function Fashion() {
         )
 
       })}
-     </div>
+
 
 
     </>

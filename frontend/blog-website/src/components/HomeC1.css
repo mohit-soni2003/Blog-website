@@ -3,9 +3,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    height: 95vh;
-   
     margin: 40px 0px;
+    height: 100vh;
 }
 
 .slogan-part1{
@@ -14,10 +13,13 @@
 
    .slogan-part1 h1{
     width: 100%;
+    font-size: 3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
    }
 .slogan-part2{
     width: 400x;
-    height: 600px;
+    height: 400px
     
 }
 .slogan-part2  img{

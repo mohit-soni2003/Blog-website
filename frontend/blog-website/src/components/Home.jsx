@@ -1,4 +1,3 @@
-import NavigationBar from "./Nav"
 import { useState } from 'react'
 import Card from "./Card"
 import FoodImage from "../img/food.png"
@@ -14,7 +13,7 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
         <>
-            <NavigationBar></NavigationBar>
+            
 
     <HomeC1></HomeC1>
             <div >

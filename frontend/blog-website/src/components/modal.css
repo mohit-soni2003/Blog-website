@@ -1,0 +1,17 @@
+.modal-centere{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.dark-bg{
+    background-color: rgba(0, 0, 0, 0.211);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
