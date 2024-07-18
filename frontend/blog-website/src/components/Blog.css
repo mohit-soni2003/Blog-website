@@ -1,0 +1,39 @@
+
+.blog{
+    border: 1px solid #91919175;
+    border-radius: px;
+    padding: 5% 5%;
+    align-items: center;
+    background-color: rgba(238, 238, 238, 0.733);
+}
+.blog-image{
+    display: block;
+    margin: 3% auto;
+    width: 30%;
+    
+}
+.blog-image img{
+    width: 100%;
+    height: 100%;
+}
+.blog-title{
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.blog-description{
+    font-size: 27px;
+    text-align: left;
+    padding: 2%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(225, 225, 225, 0.488);
+}
+.blog-content{
+    font-size: 23px;
+    text-align: left;
+    margin: 3% 0px;
+    padding: 2%;
+    border-radius: 7px;
+    background-color: rgba(225, 225, 225, 0.255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
