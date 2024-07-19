@@ -18,7 +18,8 @@ const blogSchema = new mongoose.Schema({
     },
     author : {
         type : String,
-        required:true
+        required:true,
+        default:"Harshil Dhoot"
     },
     views : {
         type : String,

@@ -67,7 +67,9 @@ function SignIn() {
   return (
 <>
 <div className='signin-form-container'>
-  <div className='signin-form-gif'><img src={gif} alt="" /></div>
+  <div className='signin-form-gif'><h1 className='welcome'>Welcome Back</h1>
+    <img src={gif} alt="" /> 
+  </div>
   <div className='signin-form'>
   <Form className='m-5'>
       <Form.Group className="mb-3 " controlId="username">
@@ -82,11 +84,16 @@ function SignIn() {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange} />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <input type="button" value={"signin"} onClick={postData}  />
+   
+      <input type="button" className='btn btn-danger mt-3' value={"signin"} onClick={postData}  />
+
+      <input type="button" className='btn btn-danger mt-3' value={"signup"} onClick="/signup"  />
+
+
+      
     </Form>
+    
+    
   </div>
 </div>
 </>

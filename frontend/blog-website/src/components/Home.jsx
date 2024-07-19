@@ -10,6 +10,7 @@ import HomeC1 from "./HomeC1"
 import "./Home.css";
 import { Link } from 'react-router-dom';
 
+
 function Home() {
     return (
         <>

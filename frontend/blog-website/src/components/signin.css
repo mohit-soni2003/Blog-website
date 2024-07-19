@@ -9,6 +9,10 @@
     border-radius: 10px ;
     box-shadow: 5px 5px 10px rgb(123, 123, 123);
 }
+.welcome{
+    text-align: center;
+    color: #d1c6dc;
+}
 
 .signin-form-gif img{
     width:20em ;
