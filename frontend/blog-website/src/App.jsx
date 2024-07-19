@@ -15,6 +15,7 @@ import Travel from './components/Travel';
 import Modal from "./components/Modal"
 import Entertainment from './components/Entertainment';
 import Blog from './components/Blog';
+import Allblogs from './components/Allblogs';
 import { LoginContext } from './context/LoginContext';
 
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/createblog" element={<CreateBlog />}></Route>
           <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/allblogs" element={<Allblogs />}></Route>
 
         </Routes>
         

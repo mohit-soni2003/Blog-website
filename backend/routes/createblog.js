@@ -9,6 +9,15 @@ router.get("/createblog",requireLogin, (req, res) => {
     res.json({ message: "create blog get route" })
 });
 
+router.get("/allblogs", async(req, res) => {
+    try {
+        let data = await Blog.find({});
+        res.json( data );
+    } catch (err) {
+        res.status(500).json({ error:"error in Fetching BLogs" });
+    }
+});
+
 
 router.get("/categories/:category" , async(req, res) => {
     const category = req.params.category;

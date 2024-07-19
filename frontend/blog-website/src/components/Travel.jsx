@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-
+import './Fashion.css'
 
 
 import NavigationBar from "./Nav"
@@ -45,27 +45,43 @@ function Travel() {
   }, []);
   // console.log(data)
 
+  const visitBlog =async(id)=>{
+    const response = await fetch(`http://localhost:8080/blog/${id}`)
+    const blogData =await response.json()
+    console.log(blogData)
+
+    navigate("/blog", { state: { blogData } });
+  }
+
   return (
 
     <>
-      
-      {/*cards*/}
-      {data.map((blogs) => {console.log(blogs)
-        return(
-        <Card style={{ width: '22rem', height: '35rem' }} className='category-card'>
-          <Card.Img variant="top" src={blogs.image} />
-          <Card.Body >
-            <Card.Title>{blogs.title}</Card.Title>
-            <Card.Text>
-              {blogs.description}
-            </Card.Text>
+      <div className="category-blog-container">
 
-            <h6 style={{ color: "red" }}>{blogs.content}</h6>
-          </Card.Body>
-        </Card>
-        )
+        {/*cards*/}
+        {data.map((blogs) => {
+          console.log(blogs)
+          return (
+            <div id={blogs._id} onClick={() => visitBlog(blogs._id)}>
+              <Card className="category-card">
+                <div className="cat-image">
+                  <Card.Img variant="top" src={blogs.image} />
+                </div>
+                <Card.Body >
+                  <Card.Title>{blogs.title}</Card.Title>
+                  <Card.Text className="cat-card-desc">
+                    {blogs.description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
 
-      })}
+
+          )
+
+        })}
+
+      </div>
 
 
     </>
