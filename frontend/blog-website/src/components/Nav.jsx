@@ -82,10 +82,9 @@ export default function NavigationBar({login}) {
 
 
 
-              <LinkContainer to="">
+              <LinkContainer to="/allblogs">
                 <Nav.Link >
-                  <HashLink smooth style={{ textDecoration: "none", color: "black" }} to="/#home-category">Blogs
-                  </HashLink>
+                  Blogs
                 </Nav.Link>
               </LinkContainer>
 
