@@ -13,6 +13,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { LoginContext } from '../context/LoginContext';
+import profile from "../img/profile.png"
+import { Link } from 'react-router-dom';
 
 
 
@@ -36,6 +38,10 @@ export default function NavigationBar({login}) {
       return (
         <>
           <Button variant="danger mx-4" onClick={()=>{setmodalopen(true)}}>Logout</Button>
+
+        <Link to="/profile">
+          <div className="profile-icon"><img src={profile} alt="" /></div>
+        </Link>
         </>
       )
     }
@@ -112,8 +118,8 @@ export default function NavigationBar({login}) {
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
-            </Form>
           {logoutButtonStatus()}
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
