@@ -5,14 +5,17 @@ import NavigationBar from "./Nav";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import uploadimg from "../img/upload.jpg"
+
+import ReactQuill from 'react-quill';
 
 
 function CreateBlog() {
     const navigate = useNavigate()
 
-     // Toast Function ----------- ---------- --------- -------
-     const notifyA = (msg) => toast.success(msg)
-     const notifyB = (msg) => toast.error(msg)
+    // Toast Function ----------- ---------- --------- -------
+    const notifyA = (msg) => toast.success(msg)
+    const notifyB = (msg) => toast.error(msg)
 
 
     // State Variables -------------------------------
@@ -72,51 +75,60 @@ function CreateBlog() {
         }
 
     }
+    //preview 
+    function Default(){
+        if(!{title}){
+            return "Title"
+        }else{
+            return {title};
+        }
+
+    }
 
 
     // ------------Blog posting to server-----------------
 
     useEffect(() => {
-        if(url){
+        if (url) {
             // console.log(title, description, content, image, author, views, like, categories,url)
 
-        fetch("http://localhost:8080/createblog",
-            {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + localStorage.getItem("jwt")
-                },
-                body: JSON.stringify({
-                    title: title,
-                    description: description,
-                    content: content,
-                    image: url,
-                    views: views,
-                    categories: categories
+            fetch("http://localhost:8080/createblog",
+                {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("jwt")
+                    },
+                    body: JSON.stringify({
+                        title: title,
+                        description: description,
+                        content: content,
+                        image: url,
+                        views: views,
+                        categories: categories
+                    })
+                }
+            ).then((res) => res.json())
+                .then((data) => {
+                    if (data.message) {
+                        notifyA(data.message)
+                        navigate("/")
+                    }
+                    if (data.error) {
+                        notifyB(data.error)
+                    }
                 })
-            }
-        ).then((res) => res.json())
-            .then((data) => {
-                if (data.message) {
-                    notifyA(data.message)
-                    navigate("/")
-                }
-                if (data.error) {
-                    notifyB(data.error)
-                }
-            })
 
         }
     }, [url])
-    
 
-    const postDetails=()=>{
-        if(!image){
+
+    const postDetails = () => {
+        if (!image) {
             notifyB("Please Select Image")
         }
         const data = new FormData();
-        data.append("file",image)
+        data.append("file", image)
         data.append("upload_preset", "blog-website")
         data.append("cloud_name", "mohitcloud2003")
         fetch("https://api.cloudinary.com/v1_1/mohitcloud2003/image/upload",
@@ -134,49 +146,75 @@ function CreateBlog() {
 
 
         <>
-            
+
 
             <div className='form'>
-                <Form className='m-4 inputfield'>
+                <div className='blogpost-form'>
+                    <Form className='m-4 inputfield'>
 
-                    <Form.Select aria-label="Default select example" onChange={handleCategoriesChange}>
-                        <option className='text-center'>Select Category </option>
-                        <option value="fashion">Fashion & Beauty</option>
-                        <option value="food">Food</option>
-                        <option value="sports">Sports Fitness & Wellness</option>
-                        <option value="travel">Travel</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="technology">Technology</option>
-                    </Form.Select>
+                        <Form.Select aria-label="Default select example" onChange={handleCategoriesChange}>
+                            <option className='text-center'>Select Category </option>
+                            <option value="fashion">Fashion & Beauty</option>
+                            <option value="food">Food</option>
+                            <option value="sports">Sports Fitness & Wellness</option>
+                            <option value="travel">Travel</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="technology">Technology</option>
+                        </Form.Select>
+                        <div className='mb-3 inp-bx-img-tit w-100'>
+                        <Form.Group className="mb-3  inputfield title" controlId="Description">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control type="text" placeholder="Enter a sutaible Title for your blog " onChange={handleTitleChange} className='title-inp' />
+                            </Form.Group>
 
-                    <Form.Group className="mb-3 inputfield" controlId="Description">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" placeholder="Enter a sutaible Title for your blog " onChange={handleTitleChange} />
-                    </Form.Group>
+                            <Form.Group className="mb-3  inputfield"  >
+                                <Form.Label>Image Link</Form.Label>
+                                <Form.Control type='file' placeholder="Select Image For Blog" accept='image/*' onChange={loadImage} />
+                            </Form.Group>
 
-                    <Form.Group className="mb-3 inputfield" controlId="Description">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" placeholder="Enter A small description " onChange={handleDescriptionChange} />
-                    </Form.Group>
+                            
 
-                    <Form.Group className="mb-3 inputfield" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Write your Blog here</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder='Write your Blog Here . . . . .' onChange={handleContentChange} />
-                    </Form.Group>
 
-                    <img alt="" id='output' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogctJgKGzSpzmnn49L2QW3LALznYajgoiew&usqp=CAU" />
+                        </div>
+                        <Form.Group className="mb-3 inputfield" controlId="Description">
+                            <Form.Label id='editor'>Description</Form.Label>
+                            <Form.Control type="text" placeholder="Enter A small description " onChange={handleDescriptionChange} />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3 inputfield" controlId="output">
-                        <Form.Label>Image Link</Form.Label>
-                        <Form.Control type='file' placeholder="Select Image For Blog" accept='image/*' onChange={loadImage} />
-                    </Form.Group>
+                        <Form.Group className="mb-3 inputfield" controlId="exampleForm.ControlTextarea1" >
 
-                    <input type="button" value={"Post Blog"} onClick={postDetails} />
+                            <Form.Label>Write your Blog here</Form.Label>
+                            <Form.Control as="textarea" rows={3} placeholder='Write your Blog Here . . . . .' onChange={handleContentChange} className='blogcontent' />
+                        </Form.Group>
 
-                </Form>
+                      
+
+                        <input type="button" value={"Post Blog"} onClick={postDetails} />
+
+                    </Form></div>
+                <div className='preview'> 
+
+                    <div><h1>Your Blog Preview</h1></div>
+               
+                    <div className='main-preview' > 
+                    <h4> {categories}</h4>
+                    <h5>{title}</h5>
+                         <img alt="" id='output' className='preview-image' src={uploadimg} />    
+                    <h4>
+                        {}
+                        </h4>
+                    <h5>{description}</h5>
+               
+                    <h5>{content}</h5>
+                   
+                   
+
+                    </div>
+                </div>  
             </div></>
 
     );
 }
+
 
 export default CreateBlog;

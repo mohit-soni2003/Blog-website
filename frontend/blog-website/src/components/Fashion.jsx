@@ -73,7 +73,6 @@ function Fashion() {
                   {blogs.description}
                 </Card.Text>
 
-                <h6 style={{ color: "red" }}>{blogs.content}</h6>
               </Card.Body>
             </Card>
           </div>
