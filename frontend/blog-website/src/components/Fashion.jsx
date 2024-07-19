@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Fashion.css'
 import Card from 'react-bootstrap/Card';
 import Blog from "./Blog"
+import './Fashion.css'
 
 
 
@@ -48,9 +49,9 @@ function Fashion() {
   }, []);
   // console.log(data)
 
-  const visitBlog =async(id)=>{
+  const visitBlog = async (id) => {
     const response = await fetch(`http://localhost:8080/blog/${id}`)
-    const blogData =await response.json()
+    const blogData = await response.json()
     console.log(blogData)
 
     navigate("/blog", { state: { blogData } });
@@ -59,30 +60,32 @@ function Fashion() {
   return (
 
     <>
+      <div className="category-blog-container">
 
-      {/*cards*/}
-      {data.map((blogs) => {
-        console.log(blogs)
-        return (
-          <div id={blogs._id} onClick={()=>visitBlog(blogs._id)}>
-            <Card style={{ width: '22rem', height: '35rem' }} className='category-card' >
-              <Card.Img variant="top" src={blogs.image} className="cat-image" />
-              <Card.Body >
-                <Card.Title>{blogs.title}</Card.Title>
-                <Card.Text>
-                  {blogs.description}
-                </Card.Text>
+        {/*cards*/}
+        {data.map((blogs) => {
+          console.log(blogs)
+          return (
+            <div id={blogs._id} onClick={() => visitBlog(blogs._id)}>
+              <Card className="category-card">
+                <div className="cat-image">
+                  <Card.Img variant="top" src={blogs.image} />
+                </div>
+                <Card.Body >
+                  <Card.Title>{blogs.title}</Card.Title>
+                  <Card.Text className="cat-card-desc">
+                    {blogs.description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
 
-                <h6 style={{ color: "red" }}>{blogs.content}</h6>
-              </Card.Body>
-            </Card>
-          </div>
 
+          )
 
-        )
+        })}
 
-      })}
-
+      </div>
 
 
     </>
