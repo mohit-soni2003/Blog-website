@@ -76,11 +76,11 @@ function CreateBlog() {
 
     }
     //preview 
-    function Default(){
-        if(!{title}){
+    function Default() {
+        if (!{ title }) {
             return "Title"
-        }else{
-            return {title};
+        } else {
+            return { title };
         }
 
     }
@@ -162,7 +162,7 @@ function CreateBlog() {
                             <option value="technology">Technology</option>
                         </Form.Select>
                         <div className='mb-3 inp-bx-img-tit w-100'>
-                        <Form.Group className="mb-3  inputfield title" controlId="Description">
+                            <Form.Group className="mb-3  inputfield title" controlId="Description">
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control type="text" placeholder="Enter a sutaible Title for your blog " onChange={handleTitleChange} className='title-inp' />
                             </Form.Group>
@@ -172,7 +172,7 @@ function CreateBlog() {
                                 <Form.Control type='file' placeholder="Select Image For Blog" accept='image/*' onChange={loadImage} />
                             </Form.Group>
 
-                            
+
 
 
                         </div>
@@ -187,30 +187,30 @@ function CreateBlog() {
                             <Form.Control as="textarea" rows={3} placeholder='Write your Blog Here . . . . .' onChange={handleContentChange} className='blogcontent' />
                         </Form.Group>
 
-                      
+
 
                         <input type="button" value={"Post Blog"} onClick={postDetails} />
 
                     </Form></div>
-                <div className='preview'> 
+                <div className='preview'>
 
                     <div><h1>Your Blog Preview</h1></div>
-               
-                    <div className='main-preview' > 
-                    <h4> {categories}</h4>
-                    <h5>{title}</h5>
-                         <img alt="" id='output' className='preview-image' src={uploadimg} />    
-                    <h4>
-                        {}
+
+                    <div className='main-preview' >
+                        <h4> {categories}</h4>
+                        <h4>{title}</h4>
+                        <img alt="" id='output' className='preview-image' src={uploadimg} />
+                        <h4>
+                            { }
                         </h4>
-                    <h5>{description}</h5>
-               
-                    <h5>{content}</h5>
-                   
-                   
+                        <h4>{description}</h4>
+
+                        <h4>{content}</h4>
+
+
 
                     </div>
-                </div>  
+                </div>
             </div></>
 
     );
