@@ -4,6 +4,7 @@ const USERS = require("../models/users")
 const bcrypt = require('bcrypt');
 const {jwt_secret} = require("../keys")
 const jwt = require("jsonwebtoken")
+const requireLogin = require("../middlewares/requireLogin")
 
 
 
@@ -87,5 +88,9 @@ router.post("/signin",(req,res)=>{
     })
 
 })
-
+router.get("/myprofile",requireLogin,(req,res)=>{
+    const profile_data = req.user;
+    console.log(profile_data)
+    res.json(profile_data)
+})
  module.exports=router;

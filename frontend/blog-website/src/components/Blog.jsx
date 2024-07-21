@@ -14,7 +14,7 @@ const Blog = () => {
           <div className="blog-description">{blogData.description}</div>
           <div className="blog-content">{blogData.content}</div>
           <h5>{blogData.categories}</h5>
-          <div className="created-by">Created by : {blogData.author.name}Harshil dhoot
+          <div className="created-by">Created by : {blogData.author}Harshil dhoot
             
           </div>
 

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { Schema } = mongoose;
 const blogSchema = new mongoose.Schema({
     title : {
         type : String,
@@ -17,9 +18,9 @@ const blogSchema = new mongoose.Schema({
         required:true
     },
     author : {
-        type : String,
+        type : Schema.Types.ObjectId,
+         ref: 'USERS',
         required:true,
-        default:"Harshil Dhoot"
     },
     views : {
         type : String,
