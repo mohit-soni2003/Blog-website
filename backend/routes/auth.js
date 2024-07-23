@@ -93,4 +93,24 @@ router.get("/myprofile",requireLogin,(req,res)=>{
     console.log(profile_data)
     res.json(profile_data)
 })
+
+router.put("/uploadprofilepic",requireLogin,async (req,res)=>{
+    try {
+        const updatedUser = await USERS.findByIdAndUpdate(
+            req.user._id,
+            { $set: { Photo: req.body.photo } },
+            { new: true } // This option returns the updated document
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json(updatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
  module.exports=router;
+
