@@ -16,7 +16,7 @@ import { LoginContext } from '../context/LoginContext';
 import profile from "../img/profile.png"
 import { Link } from 'react-router-dom';
 
-
+import SearchBox from "./SearchBox";
 
 const searchTexts = [
   'Search for the latest Blogs!',
@@ -111,13 +111,7 @@ export default function NavigationBar({login}) {
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder={searchTexts[currentTextIndex]} // Dynamically update placeholder
-                className="me-2 "
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
+         <SearchBox></SearchBox>
           {logoutButtonStatus()}
             </Form>
           </Navbar.Collapse>

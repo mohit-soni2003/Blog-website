@@ -1,12 +1,14 @@
-import { useState } from 'react'
-import Card from "./Card"
-import FoodImage from "../img/food.png"
-import SportsImage from "../img/sports.jpg"
-import FashionImage from "../img/fashion.jpg"
-import TravelImage from "../img/travel.jpg"
-import TechnologyImage from "../img/Technology.jpg"
-import EntertainmentImage from "../img/Entertainment.jpg"
-import HomeC1 from "./HomeC1"
+import { useState } from 'react';
+import Card from "./Card";
+import FoodImage from "../img/food.png";
+import SportsImage from "../img/sports.jpg";
+import FashionImage from "../img/fashion.jpg";
+import TravelImage from "../img/travel.jpg";
+import TechnologyImage from "../img/Technology.jpg";
+import EntertainmentImage from "../img/Entertainment.jpg";
+import HomeC1 from "./HomeC1";
+import SearchBox from "./SearchBox";
+
 import "./Home.css";
 import { Link } from 'react-router-dom';
 
@@ -30,6 +32,9 @@ function Home() {
                     <Card src={TechnologyImage} route="Technology" title="Technology" description="Power of Technology! Discover innovative gadgets, in-depth reviews, and practical tips to enhance your life and work with technology. (Click to learn more)"></Card>
                     
                 </div>
+                <SearchBox></SearchBox>
+
+               
 
             </div>
 
