@@ -7,10 +7,12 @@ import { toast } from 'react-toastify'; // Import toast if using react-toastify
 import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
+import ProfilePic from './Profilepic';
 
 export default function Profile() {
   const [data, setData] = useState(null);
   const [profileData, setProfileData] = useState(null);
+  const [changeProfilePic, setchangeProfilePic] = useState(false)
   const navigate = useNavigate();
 
   // Toast Functions
@@ -72,6 +74,18 @@ export default function Profile() {
     }
   };
 
+  //to change profile picture 
+
+  const changeProfile = ()=>{
+    if(changeProfilePic){
+      setchangeProfilePic(false)
+    }
+    else{
+      setchangeProfilePic(true)
+    }
+
+  }
+
   if (!profileData || data === null) {
     return <div className="loadu">Loading............</div>;
   }
@@ -80,8 +94,8 @@ export default function Profile() {
    return(
     <>
      <div className="profile-container">
-        <div className="profile">
-          <div className="profile-img"><img src={profile} alt="" /></div>
+        <div className="profile xy">
+          <div className="profile-img"><img src={profileData.photo} alt="" /></div>
           <div className="profile-name">{profileData.name}</div>
           <div className="follower-detail">
             <h6>Follower 33</h6>
@@ -89,7 +103,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="profile-details">
+        <div className="profile-details xy">
           <div className="full-name profile-inp">Full Name: <div className="profile-data">{profileData.name}</div></div>
           <div className="email profile-inp">Email: <div className="profile-data">{profileData.email}</div></div>
           <div className="mobile profile-inp">Mobile: <div className="profile-data">985757844</div></div>
@@ -98,7 +112,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="profile-blogs">No blogs are posted by you</div>
+      <div className="profile-blogs">No blogs are posted by</div>
     </>
    )
     
@@ -108,7 +122,7 @@ export default function Profile() {
     <div className="full-page-profile">
       <div className="profile-container">
         <div className="profile">
-          <div className="profile-img"><img src={profile} alt="" /></div>
+          <div className="profile-img"><img src={profile} alt="" onClick={changeProfile} /></div>
           <div className="profile-name">{profileData.name}</div>
           <div className="follower-detail">
             <h6>Follower 33</h6>
@@ -117,11 +131,27 @@ export default function Profile() {
         </div>
 
         <div className="profile-details">
-          <div className="full-name profile-inp">Full Name: <div className="profile-data">{profileData.name}</div></div>
-          <div className="email profile-inp">Email: <div className="profile-data">{profileData.email}</div></div>
-          <div className="mobile profile-inp">Mobile: <div className="profile-data">985757844</div></div>
-          <div className="username profile-inp">Username: <div className="profile-data">{profileData.username}</div></div>
-          <Button variant="outline-primary">Edit</Button>
+          <table>
+            
+            <tr >
+              <td>Name </td>
+              <td >Mohit Soni</td>
+            </tr>
+            <tr>
+              <td>Username </td>
+              <td>2mohitsoni</td>
+            </tr>
+            <tr>
+              <td>Email </td>
+              <td>mohitsoni@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Phone  </td>
+              <td>9589571577</td>
+            </tr>
+
+          </table>
+          <Button variant="outline-secondary">Edit</Button>
         </div>
       </div>
 
@@ -142,6 +172,10 @@ export default function Profile() {
           </div>
         ))}
       </div>
+      {
+        changeProfilePic && <ProfilePic changeProfile={changeProfile}
+        setchangeProfilePic={setchangeProfilePic}></ProfilePic>
+      }
     </div>
   );
 }
