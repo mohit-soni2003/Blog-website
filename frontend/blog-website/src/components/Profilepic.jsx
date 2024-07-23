@@ -59,7 +59,7 @@ function ProfilePic({ changeProfile, setChangeProfilePic }) {
             if (url) {
                 try {
                     const res = await fetch("http://localhost:8080/uploadprofilepic", {
-                        method: "put",
+                        method: "PUT",
                         headers: {
                             "Content-Type": "application/json",
                             "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -69,8 +69,11 @@ function ProfilePic({ changeProfile, setChangeProfilePic }) {
                         })
                     });
                     const result = await res.json();
+                    console.log("url : " , url)
                     console.log(result);
                     notifySuccess("Profile picture updated successfully!");
+                    changeProfile()
+                    window.location.reload()
                 } catch (err) {
                     console.error(err);
                     notifyError("Failed to update profile picture!");

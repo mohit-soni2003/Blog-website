@@ -98,7 +98,7 @@ router.put("/uploadprofilepic",requireLogin,async (req,res)=>{
     try {
         const updatedUser = await USERS.findByIdAndUpdate(
             req.user._id,
-            { $set: { Photo: req.body.photo } },
+            { $set: { photo: req.body.photo } },
             { new: true } // This option returns the updated document
         );
 

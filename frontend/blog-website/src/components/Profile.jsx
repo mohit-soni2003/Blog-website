@@ -87,32 +87,57 @@ export default function Profile() {
   }
 
   if (!profileData || data === null) {
-    return <div className="loadu">Loading............</div>;
+    return <div className="loading">Loading............</div>;
+  }
+
+  const userProfile = ()=>{
+    return (
+      <div className="profile-container">
+      <div className="profile">
+        <div className="profile-img"><img src={profileData.photo} alt="" onClick={changeProfile} /></div>
+        <div className="profile-name">{profileData.name}</div>
+        <div className="follower-detail">
+          <h6>Follower 33</h6>
+          <h6>Following 33</h6>
+        </div>
+      </div>
+
+      <div className="profile-details">
+        <table>
+          
+          <tr >
+            <td>Name </td>
+            <td >Mohit Soni</td>
+          </tr>
+          <tr>
+            <td>Username </td>
+            <td>2mohitsoni</td>
+          </tr>
+          <tr>
+            <td>Email </td>
+            <td>mohitsoni@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Phone  </td>
+            <td>9589571577</td>
+          </tr>
+
+        </table>
+        <Button variant="outline-secondary">Edit</Button>
+      </div>
+    </div>
+    );
   }
 
   if (data.length === 0) {
    return(
     <>
-     <div className="profile-container">
-        <div className="profile xy">
-          <div className="profile-img"><img src={profileData.photo} alt="" /></div>
-          <div className="profile-name">{profileData.name}</div>
-          <div className="follower-detail">
-            <h6>Follower 33</h6>
-            <h6>Following 33</h6>
-          </div>
-        </div>
-
-        <div className="profile-details xy">
-          <div className="full-name profile-inp">Full Name: <div className="profile-data">{profileData.name}</div></div>
-          <div className="email profile-inp">Email: <div className="profile-data">{profileData.email}</div></div>
-          <div className="mobile profile-inp">Mobile: <div className="profile-data">985757844</div></div>
-          <div className="username profile-inp">Username: <div className="profile-data">{profileData.username}</div></div>
-          <Button variant="outline-primary">Edit</Button>
-        </div>
-      </div>
-
+    {userProfile()}
       <div className="profile-blogs">No blogs are posted by</div>
+      {
+        changeProfilePic && <ProfilePic changeProfile={changeProfile}
+        setchangeProfilePic={setchangeProfilePic}></ProfilePic>
+      }
     </>
    )
     
@@ -120,41 +145,7 @@ export default function Profile() {
 
   return (
     <div className="full-page-profile">
-      <div className="profile-container">
-        <div className="profile">
-          <div className="profile-img"><img src={profile} alt="" onClick={changeProfile} /></div>
-          <div className="profile-name">{profileData.name}</div>
-          <div className="follower-detail">
-            <h6>Follower 33</h6>
-            <h6>Following 33</h6>
-          </div>
-        </div>
-
-        <div className="profile-details">
-          <table>
-            
-            <tr >
-              <td>Name </td>
-              <td >Mohit Soni</td>
-            </tr>
-            <tr>
-              <td>Username </td>
-              <td>2mohitsoni</td>
-            </tr>
-            <tr>
-              <td>Email </td>
-              <td>mohitsoni@gmail.com</td>
-            </tr>
-            <tr>
-              <td>Phone  </td>
-              <td>9589571577</td>
-            </tr>
-
-          </table>
-          <Button variant="outline-secondary">Edit</Button>
-        </div>
-      </div>
-
+      {userProfile()}
       <div className="profile-blogs">
         {data.map((blogs) => (
           <div key={blogs._id} id={blogs._id} onClick={() => visitBlog(blogs._id)}>
