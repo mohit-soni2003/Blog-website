@@ -1,25 +1,29 @@
 .home-container{
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: space-around;
-    margin: 40px 0px;
     height: 100vh;
+    border: 0PX solid red;
 }
 
 .slogan-part1{
     width: 50%;
-   }
+    border: 0px solid green;
+    min-width: 400px;
+}
 
-   .slogan-part1 h1{
+.slogan-part1 h1{
     width: 100%;
+    padding: 0px 2%;
     font-size: 3rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-   }
+    
+}
 .slogan-part2{
     width: 400x;
-    height: 400px
+    height: 400px;
+    border: 0px solid rgb(111, 128, 0);
     
 }
 .slogan-part2  img{
@@ -29,3 +33,22 @@
 .Create-blog{
     margin: 45px 10px;
 }
+.home-btn-container{
+    display: flex;
+    align-items: center;
+    border: 0px solid rgb(255, 78, 78);
+}
+
+@media screen and (max-width: 480px) { 
+    .slogan-part1 h1{
+        font-size: 35px;   
+    }
+    .slogan-part2{
+        width: 300x;
+        height: 300px;  
+    }
+    .home-container{
+        height: 580px;
+        padding:0px 20px;
+    }
+  }

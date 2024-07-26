@@ -24,21 +24,22 @@ function HomeC1() {
     };
 
 
-  }, []); 
+  }, []);
 
   return (
     <>
       <div className="home-container" id='home-category'>
         <div className="slogan-part1">
           <h1 className="slogan">Write, rewrite, and publish! Let your voice be heard."</h1>
-          <br />
-          <Button variant="primary" onClick={()=>{navigate("/createblog")}} className="Create-blog">
-            Create Blog
-          </Button>
-          <Button variant="primary" className="Explore-blog">
-          <HashLink smooth style={{ textDecoration: "none", color:"white" }} to="/#home-category">Explore Blogs
-          </HashLink>
-          </Button>
+          <div className="home-btn-container">
+            <Button variant="primary" onClick={() => { navigate("/createblog") }} className="Create-blog">
+              Create Blog
+            </Button>
+            <Button variant="primary" className="Explore-blog">
+              <HashLink smooth style={{ textDecoration: "none", color: "white" }} to="/#home-category">Explore Blogs
+              </HashLink>
+            </Button>
+          </div>
         </div>
         <div className="slogan-part2">
           <img src={mainpage} alt="" />

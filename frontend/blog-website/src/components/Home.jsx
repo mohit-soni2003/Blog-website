@@ -34,7 +34,7 @@ function Home() {
                 </div>
                 <SearchBox></SearchBox>
 
-               
+                
 
             </div>
 
