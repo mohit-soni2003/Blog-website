@@ -18,6 +18,8 @@ import Blog from './components/Blog';
 import Allblogs from './components/Allblogs';
 import Profile from './components/Profile';
 import { LoginContext } from './context/LoginContext';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 
 function App() {

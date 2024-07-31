@@ -51,6 +51,7 @@ function SignIn() {
       else{
             notifyA(data.message)
             localStorage.setItem("jwt",data.token)
+            localStorage.setItem("user",JSON.stringify(data.user))
             setuserLogin(true)
             console.log(data.message)
             

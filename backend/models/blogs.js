@@ -28,7 +28,11 @@ const blogSchema = new mongoose.Schema({
     categories:{
         type : String,
         required : true
-    }
+    },
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: "USERS"
+    }]
 })
 
 module.exports = mongoose.model("Blog",blogSchema)

@@ -87,5 +87,32 @@ router.post("/createblog", requireLogin, (req, res) => {
 });
 
 
+router.put("/like", requireLogin, async (req, res) => {
+    try {
+        const result = await Blog.findByIdAndUpdate(
+            req.body.blogid,
+            { $push: { likes: req.user._id } },
+            { new: true }
+        );
+        console.log(result)
+        res.json(result);
+    } catch (err) {
+        res.status(422).json({ error: err.message });
+    }
+});
+router.put("/unlike", requireLogin, async (req, res) => {
+    try {
+        const result = await Blog.findByIdAndUpdate(
+            req.body.blogid,
+            { $pull: { likes: req.user._id } },
+            { new: true }
+        );
+        console.log(result)
+        res.json(result);
+    } catch (err) {
+        res.status(422).json({ error: err.message });
+    }
+});
+
 module.exports = router;
 
