@@ -32,6 +32,15 @@ export default function Allblogs() {
       })
     }).then(res => res.json()).
       then((result) => {
+        const newData = data.map((posts)=>{
+          if(blogs._id==result._id){
+            return result;
+          }
+          else{
+            posts
+          }
+        })
+        setdata(newData)
         console.log(result)
       })
   }
@@ -47,6 +56,15 @@ export default function Allblogs() {
       })
     }).then(res => res.json()).
       then((result) => {
+        const newData = data.map((posts)=>{
+          if(blogs._id==result._id){
+            return result;
+          }
+          else{
+            posts
+          }
+        })
+        setdata(newData)
         console.log(result)
       })
   }
@@ -62,7 +80,7 @@ export default function Allblogs() {
       })
       .catch(err => console.log(err))
     console.log(data)
-  }, [])
+  }, [data])
 
 
 
@@ -102,7 +120,7 @@ export default function Allblogs() {
                   }
                   </div>
 
-                  <div className="likes"> 45 Likes </div>
+                  <div className="likes"> {blogs.likes.length} Likes </div>
                 </Card.Body>
               </Card>
             </div>
