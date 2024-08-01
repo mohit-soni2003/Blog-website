@@ -10,10 +10,13 @@ export default function Allblogs() {
   const [userid, setuserid] = useState()
 
   useEffect(() => {
-    const tempuserid  = JSON.parse(localStorage.getItem("user"))._id;
-    setuserid(tempuserid)
-    console.log(userid)
-    console.log(userid)
+    if(localStorage.getItem("user")){
+
+      const tempuserid  = JSON.parse(localStorage.getItem("user"))._id;
+      setuserid(tempuserid)
+      console.log(userid)
+      console.log(userid)
+    }
     
   }, [])
   
@@ -120,7 +123,7 @@ export default function Allblogs() {
                   }
                   </div>
 
-                  <div className="likes"> {blogs.likes.length} Likes </div>
+                  <div className="likes"> {blogs.likes.length } Likes </div>
                 </Card.Body>
               </Card>
             </div>

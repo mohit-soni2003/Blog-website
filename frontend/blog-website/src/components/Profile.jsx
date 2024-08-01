@@ -107,19 +107,19 @@ export default function Profile() {
           
           <tr >
             <td>Name </td>
-            <td >Mohit Soni</td>
+            <td >{profileData.name}</td>
           </tr>
           <tr>
             <td>Username </td>
-            <td>2mohitsoni</td>
+            <td>{profileData.username}</td>
           </tr>
           <tr>
             <td>Email </td>
-            <td>mohitsoni@gmail.com</td>
+            <td>{profileData.email}</td>
           </tr>
           <tr>
             <td>Phone  </td>
-            <td>9589571577</td>
+            <td>{profileData.phone}</td>
           </tr>
 
         </table>

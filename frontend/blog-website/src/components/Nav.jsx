@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect ,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "./Nav.css"
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -15,6 +15,8 @@ import { HashLink } from 'react-router-hash-link';
 import { LoginContext } from '../context/LoginContext';
 import profile from "../img/profile.png"
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Import toast if using react-toastify
+
 
 import SearchBox from "./SearchBox";
 
@@ -25,30 +27,29 @@ const searchTexts = [
   'What are you curious about today!',
 ];
 
-export default function NavigationBar({login}) {
-  const {setmodalopen} = useContext(LoginContext)
+export default function NavigationBar({ login }) {
+  const { setmodalopen } = useContext(LoginContext)
   const navigate = useNavigate()
   const token = localStorage.getItem("jwt")
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [ProfileData, setProfileData] = useState({})
 
-  
+
   const logoutButtonStatus = () => {
     if (token) {     //use token || login
       return (
         <>
-          <Button variant="danger mx-4" onClick={()=>{setmodalopen(true)}}>Logout</Button>
+          <Button variant="danger mx-4" onClick={() => { setmodalopen(true) }}>Logout</Button>
 
-        <Link to="/profile">
-          <div className="profile-icon"><img src={profile} alt="" /></div>
-        </Link>
+
         </>
       )
     }
 
   }
   const navigationStatus = () => {
-    if (!token ) {
+    if (!token) {
 
       return (
         <>
@@ -73,6 +74,31 @@ export default function NavigationBar({login}) {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const profileRes = await fetch("http://localhost:8080/myprofile", {
+          headers: {
+            "Authorization": "Bearer " + token
+          },
+        });
+
+        const profileResult = await profileRes.json();
+        setProfileData(profileResult);
+
+      } catch (err) {
+        console.error(err);
+        notifyB("Error fetching data");
+      }
+    };
+
+    fetchData();
+  }, [navigate])
+
+  //Toast Function --------- ------ --------- -------
+
+  const notifyA = (msg) => toast.success(msg)
+  const notifyB = (msg) => toast.error(msg)
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -111,8 +137,13 @@ export default function NavigationBar({login}) {
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
-         <SearchBox></SearchBox>
-          {logoutButtonStatus()}
+              <SearchBox></SearchBox>
+              {logoutButtonStatus()}
+            <Link to="/profile">
+              <div className="profile-icon">
+                <img src={ProfileData.photo ? ProfileData.photo : profile} alt="" />
+              </div>
+            </Link>
             </Form>
           </Navbar.Collapse>
         </Container>
