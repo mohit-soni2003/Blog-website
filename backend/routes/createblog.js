@@ -11,7 +11,7 @@ router.get("/createblog", requireLogin, (req, res) => {
 
 router.get("/allblogs", async (req, res) => {
     try {
-        let data = await Blog.find({});
+        let data = await Blog.find({}).populate('author');
         res.json(data);
     } catch (err) {
         res.status(500).json({ error: "error in Fetching BLogs" });

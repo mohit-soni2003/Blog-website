@@ -10,16 +10,16 @@ export default function Allblogs() {
   const [userid, setuserid] = useState()
 
   useEffect(() => {
-    if(localStorage.getItem("user")){
+    if (localStorage.getItem("user")) {
 
-      const tempuserid  = JSON.parse(localStorage.getItem("user"))._id;
+      const tempuserid = JSON.parse(localStorage.getItem("user"))._id;
       setuserid(tempuserid)
       console.log(userid)
       console.log(userid)
     }
-    
+
   }, [])
-  
+
   console.log(userid)
   //LikePost.. ...... ..... .....
 
@@ -35,11 +35,11 @@ export default function Allblogs() {
       })
     }).then(res => res.json()).
       then((result) => {
-        const newData = data.map((posts)=>{
-          if(blogs._id==result._id){
+        const newData = data.map((posts) => {
+          if (blogs._id == result._id) {
             return result;
           }
-          else{
+          else {
             posts
           }
         })
@@ -59,11 +59,11 @@ export default function Allblogs() {
       })
     }).then(res => res.json()).
       then((result) => {
-        const newData = data.map((posts)=>{
-          if(blogs._id==result._id){
+        const newData = data.map((posts) => {
+          if (blogs._id == result._id) {
             return result;
           }
-          else{
+          else {
             posts
           }
         })
@@ -110,20 +110,24 @@ export default function Allblogs() {
                   <Card.Img onClick={() => visitBlog(blogs._id)} variant="top" src={blogs.image} />
                 </div>
                 <Card.Body >
-                  <Card.Title>{blogs.title}</Card.Title>
+                  <Card.Title style={{overflow:"hidden",height:"28px"}}> {blogs.title}</Card.Title>
                   <Card.Text className="cat-card-desc" style={{ height: "100px", overflow: "hidden" }}>
                     {blogs.description}
                   </Card.Text>
-
-                  <div className="likes-icon">
-                  {
-                    blogs.likes.includes(userid)
-                    ?(<i class="bi bi-heart-fill" onClick={() =>{unlikePost(blogs._id)}} style={{ fontSize: "25px", color: "red" }}></i>)
-                    :(<i class="bi bi-heart" onClick={() =>{likePost(blogs._id)}} style={{ fontSize: "25px" }}></i>)
-                  }
+                  <div className="like-container" style={{display : "flex" , alignItems:"center" , justifyContent:"space-between"}} >
+                    <div className="likes-icon">
+                      {
+                        blogs.likes.includes(userid)
+                          ? (<i class="bi bi-heart-fill" onClick={() => { unlikePost(blogs._id) }} style={{ fontSize: "25px", color: "red" }}></i>)
+                          : (<i class="bi bi-heart" onClick={() => { likePost(blogs._id) }} style={{ fontSize: "25px" }}></i>)
+                      }
+                      <div className="likes"> {blogs.likes.length} Likes </div>
+                    </div>
+                    <div className="created-by" style={{display:"flex" , flexDirection:"column" , alignItems:"center"}}>
+                      <div><img src={blogs.author.photo} alt="" style={{width:"40px",height:"40px" , borderRadius:"50%"}} /></div>
+                      <div className="created-by-username" style={{fontSize:"18px"}}>{blogs.author.username}</div>
+                    </div>
                   </div>
-
-                  <div className="likes"> {blogs.likes.length } Likes </div>
                 </Card.Body>
               </Card>
             </div>
