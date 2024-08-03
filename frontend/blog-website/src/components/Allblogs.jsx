@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 export default function Allblogs() {
@@ -19,8 +19,6 @@ export default function Allblogs() {
     }
 
   }, [])
-
-  console.log(userid)
   //LikePost.. ...... ..... .....
 
   const likePost = (id) => {
@@ -83,7 +81,7 @@ export default function Allblogs() {
       })
       .catch(err => console.log(err))
     console.log(data)
-  }, [data])
+  }, [])
 
 
 
@@ -102,7 +100,6 @@ export default function Allblogs() {
 
         {/*cards*/}
         {data.map((blogs) => {
-          console.log(blogs)
           return (
             <div key={blogs._id} id={blogs._id}>
               <Card className="category-card">
@@ -124,8 +121,9 @@ export default function Allblogs() {
                       <div className="likes"> {blogs.likes.length} Likes </div>
                     </div>
                     <div className="created-by" style={{display:"flex" , flexDirection:"column" , alignItems:"center"}}>
-                      <div><img src={blogs.author.photo} alt="" style={{width:"40px",height:"40px" , borderRadius:"50%"}} /></div>
-                      <div className="created-by-username" style={{fontSize:"18px"}}>{blogs.author.username}</div>
+                      
+                  <Link to={`../profile/${blogs.author._id}`}>    <div><img src={blogs.author.photo} alt="" style={{width:"40px",height:"40px" , borderRadius:"50%"}} /></div></Link>
+                      <div className="created-by-username" style={{fontSize:"18px"}}>{blogs.author._id}</div>
                     </div>
                   </div>
                 </Card.Body>

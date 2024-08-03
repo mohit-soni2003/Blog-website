@@ -37,7 +37,7 @@ export default function NavigationBar({ login }) {
 
 
   const logoutButtonStatus = () => {
-    if (token) {     //use token || login
+    if (token ) {     //use token || login
       return (
         <>
           <Button variant="danger mx-4" onClick={() => { setmodalopen(true) }}>Logout</Button>
@@ -66,13 +66,6 @@ export default function NavigationBar({ login }) {
     }
   }
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % searchTexts.length);
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,14 +129,21 @@ export default function NavigationBar({ login }) {
                 <span className="material-symbols-outlined">notifications</span>
               </Nav.Link>
             </Nav>
+
             <Form className="d-flex">
-              <SearchBox></SearchBox>
+              <Form.Control style={{minWidth:"100px"}}
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
               {logoutButtonStatus()}
-            <Link to="/profile">
-              <div className="profile-icon">
-                <img src={ProfileData.photo ? ProfileData.photo : profile} alt="" />
-              </div>
-            </Link>
+              <Link to="/profile">
+                <div className="profile-icon">
+                  <img src={ProfileData.photo ? ProfileData.photo : profile} alt="" />
+                </div>
+              </Link>
             </Form>
           </Navbar.Collapse>
         </Container>
