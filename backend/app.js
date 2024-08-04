@@ -14,9 +14,9 @@ app.use(cors());
 app.use(express.json());  // parse the json data comming from post request 
 app.use(router);
 
-app.use(require("./routes/auth"));
-app.use(require("./routes/createblog"));
-app.use(require("./routes/user"));
+// app.use(require("./routes/auth"));
+// app.use(require("./routes/createblog"));
+// app.use(require("./routes/user"));
 
 app.get("/",(req,res)=>{
     res.send("hello Server is ready")
