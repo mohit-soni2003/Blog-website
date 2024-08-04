@@ -29,7 +29,7 @@ function App() {
   const [modalopen, setmodalopen] = useState(false)
   return (<>
     <BrowserRouter>
-      <div className="app" style={{background:"red"}}>
+      <div className="app" >
         <GoogleOAuthProvider clientId="846610058108-ihr4gucasi173dusjnesucoguvupo6nl.apps.googleusercontent.com">
 
           <LoginContext.Provider value={{ setuserLogin, setmodalopen }}>
