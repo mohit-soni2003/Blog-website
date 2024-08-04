@@ -30,7 +30,7 @@ function App() {
   return (<>
     <BrowserRouter>
       <div className="app">
-        <GoogleOAuthProvider clientId="680260806721-59h2nqavvoc1d2t4mrg56mt18gar8m7r.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="846610058108-ihr4gucasi173dusjnesucoguvupo6nl.apps.googleusercontent.com">
 
           <LoginContext.Provider value={{ setuserLogin, setmodalopen }}>
             <Nav login={userLogin}></Nav>

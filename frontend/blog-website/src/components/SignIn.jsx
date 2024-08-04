@@ -91,7 +91,7 @@ function SignIn() {
 
             <input type="button" className='btn btn-danger mt-3' value={"signin"} onClick={postData} />
             <input type="button" className='btn btn-danger mt-3' value={"signup"} onClick="/signup" />
-            <GoogleLogin
+            <GoogleLogin 
               onSuccess={credentialResponse => {
                 console.log("Dfdsfjdhuxzckx")
                 console.log(credentialResponse);
